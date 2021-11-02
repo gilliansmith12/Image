@@ -4,6 +4,10 @@
 PImage pic1, pic2;
 float rectXPic1, rectYPic1, rectWidthPic1, rectHeightPic1;
 float rectXPic2, rectYPic2, rectWidthPic2, rectHeightPic2;
+float pic1ImageWidthRatio, pic1ImageHeightRatio;
+float picX1, picY1, picWidth1, picHeight1;
+float pic2ImageWidthRatio, pic2ImageHeightRatio;
+float picX2, picY2, picWidth2, picHeight2;
 //
 //Geometry
 fullScreen();
@@ -17,15 +21,28 @@ rectXPic1 = displayWidth*1/4;
 rectYPic1 = displayHeight*0;
 rectWidthPic1 = displayWidth*1/2;
 rectHeightPic1 = displayHeight*1/2;
+pic1ImageWidthRatio = 4608.0/4608.0; //Longest side is 1
+pic1ImageHeightRatio = 3456.0/4608.0; //Shorter side is less that 1
+picX1 = rectXPic1;
+picY1 = rectYPic1+displayWidth*1/23;
+picWidth1 = rectWidthPic1*pic1ImageWidthRatio;
+picHeight1 = rectHeightPic1*pic1ImageHeightRatio;
+if (picWidth1 > rectWidthPic1) println("Image 1 display width issues");
 rectXPic2 = displayWidth*1/5;
 rectYPic2 = displayHeight*1/2;
 rectWidthPic2 = displayWidth*3/5;
 rectHeightPic2 = displayHeight*1/2;
+pic2ImageWidthRatio = 3000.0/4000.0;
+pic2ImageHeightRatio = 4000.0/4000.0;
+picX2 = rectXPic2+displayHeight*1/9;
+picY2 = rectYPic2;
+picWidth2 = rectWidthPic2*pic2ImageWidthRatio;
+picHeight2 = rectHeightPic2*pic2ImageHeightRatio;
 //
 //Image Layout
 rect(rectXPic1, rectYPic1, rectWidthPic1, rectHeightPic1);
 rect(rectXPic2, rectYPic2, rectWidthPic2, rectHeightPic2);
 //
 //Printing Images
-image(pic1, rectXPic1, rectYPic1, rectWidthPic1, rectHeightPic1);
-image(pic2, rectXPic2, rectYPic2, rectWidthPic2, rectHeightPic2);
+image(pic1, picX1, picY1, picWidth1, picHeight1);
+image(pic2, picX2, picY2, picWidth2, picHeight2);
